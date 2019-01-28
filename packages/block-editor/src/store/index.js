@@ -20,6 +20,7 @@ const store = registerStore( MODULE_KEY, {
 	reducer,
 	selectors,
 	actions,
+	persist: [ 'preferences' ],
 } );
 applyMiddlewares( store );
 
