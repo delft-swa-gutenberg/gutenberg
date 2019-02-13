@@ -776,17 +776,6 @@ Whether redo history exists.
 
 ## Actions
 
-### __unstableInitBlocks
-
-Returns an action object used in signalling that blocks state should be
-intialized using a specified array of blocks,
-
-This action reset the undo/redo history
-
-*Parameters*
-
- * blocks: Array of blocks.
-
 ### resetBlocks
 
 Returns an action object used in signalling that blocks state should be
@@ -1058,20 +1047,6 @@ Returns an action object used in signalling that the editor settings have been u
 *Parameters*
 
  * settings: Updated settings
-
-### redo
-
-Returns an action object used in signalling that undo history should
-restore last popped state.
-
-### undo
-
-Returns an action object used in signalling that undo history should pop.
-
-### createUndoLevel
-
-Returns an action object used in signalling that undo history record should
-be created.
 
 ### __unstableSaveReusableBlock
 
