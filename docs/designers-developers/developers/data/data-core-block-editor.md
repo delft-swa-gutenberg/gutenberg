@@ -840,6 +840,26 @@ reflects a reverse selection.
  * initialPosition: Optional initial position. Pass as -1 to
                                  reflect reverse selection.
 
+### selectPreviousBlock
+
+Returns an action object used in signalling that the block preceding the
+given clientId should be selected.
+
+*Parameters*
+
+ * clientId: Block client ID.
+
+### selectNextBlock
+
+Returns an action object used in signalling that the block following the
+given clientId should be selected.
+
+*Parameters*
+
+ * clientId: Block client ID.
+ * options: Optional selection options.
+ * options.isReverse: Whether to select preceding.
+
 ### startMultiSelect
 
 Returns an action object used in signalling that a block multi-selection has started.
@@ -964,7 +984,7 @@ Returns an action object used in signalling that two blocks should be merged
 
 ### removeBlocks
 
-Returns an action object used in signalling that the blocks corresponding to
+Yields action objects used in signalling that the blocks corresponding to
 the set of specified client IDs are to be removed.
 
 *Parameters*

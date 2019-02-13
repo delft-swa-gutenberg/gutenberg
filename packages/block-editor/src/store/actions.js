@@ -112,6 +112,36 @@ export function selectBlock( clientId, initialPosition = null ) {
 }
 
 /**
+ * Returns an action object used in signalling that the block preceding the
+ * given clientId should be selected.
+ *
+ * @param {string} clientId Block client ID.
+ *
+ * @return {Object} Action object.
+ */
+export function selectPreviousBlock( clientId ) {
+	return selectNextBlock( clientId, { isReverse: true } );
+}
+
+/**
+ * Returns an action object used in signalling that the block following the
+ * given clientId should be selected.
+ *
+ * @param {string}  clientId          Block client ID.
+ * @param {?Object} options           Optional selection options.
+ * @param {boolean} options.isReverse Whether to select preceding.
+ *
+ * @return {Object} Action object.
+ */
+export function selectNextBlock( clientId, options ) {
+	return {
+		type: 'SELECT_NEXT_BLOCK',
+		clientId,
+		...options,
+	};
+}
+
+/**
  * Returns an action object used in signalling that a block multi-selection has started.
  *
  * @return {Object} Action object.
@@ -355,20 +385,23 @@ export function mergeBlocks( firstBlockClientId, secondBlockClientId ) {
 }
 
 /**
- * Returns an action object used in signalling that the blocks corresponding to
+ * Yields action objects used in signalling that the blocks corresponding to
  * the set of specified client IDs are to be removed.
  *
  * @param {string|string[]} clientIds      Client IDs of blocks to remove.
  * @param {boolean}         selectPrevious True if the previous block should be
  *                                         selected when a block is removed.
- *
- * @return {Object} Action object.
  */
-export function removeBlocks( clientIds, selectPrevious = true ) {
-	return {
+export function* removeBlocks( clientIds, selectPrevious = true ) {
+	clientIds = castArray( clientIds );
+
+	if ( selectPrevious ) {
+		yield selectPreviousBlock( clientIds[ 0 ] );
+	}
+
+	yield {
 		type: 'REMOVE_BLOCKS',
-		clientIds: castArray( clientIds ),
-		selectPrevious,
+		clientIds,
 	};
 }
 
