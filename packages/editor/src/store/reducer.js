@@ -9,6 +9,7 @@ import {
 	mapValues,
 	keys,
 	isEqual,
+	last,
 } from 'lodash';
 
 /**

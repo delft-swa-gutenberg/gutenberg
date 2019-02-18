@@ -1,5 +1,5 @@
 /**
- * WordPress Dependencies
+ * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
 import { DropZoneProvider, SlotFillProvider } from '@wordpress/components';
