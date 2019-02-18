@@ -13,7 +13,6 @@ import {
 	updateBlock,
 	selectBlock,
 	selectPreviousBlock,
-	selectNextBlock,
 	startMultiSelect,
 	stopMultiSelect,
 	multiSelect,
